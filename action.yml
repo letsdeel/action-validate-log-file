@@ -15,12 +15,5 @@ runs:
   steps:
     - run: echo "${{ github.action_path }}" >> $GITHUB_PATH
       shell: bash
-    - run: |
-        STATUS=$(jq -r '.packages[] | select(.resolved != null) | .resolved' package-lock.json)
-        # grep -v "https://npm-${{ inputs.registry }}.d.codeartifact.eu-west-1.amazonaws.com")
-        if [ -z $STATUS ]; then
-          echo "success"
-        else
-          echo "fail"
-        fi
+    - run: ./validate.lock.file.sh ${{ inputs.registry }}
       shell: bash
