@@ -11,7 +11,7 @@ if [ $? != 0 ] ; then
   exit 0
 else
   IFS=" "
-  echo "wrong registries appear in package-lock.json file:"
+  echo ":alert: wrong registries appear in package-lock.json file:"
   echo $FILES
   unset IFS
 fi
