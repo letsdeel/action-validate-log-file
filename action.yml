@@ -17,4 +17,8 @@ runs:
       shell: bash
     - run: |
         jq -r '.packages[] | select(.resolved != null) | .resolved' package-lock.json | grep -v "https://npm-${{ inputs.registry }}.d.codeartifact.eu-west-1.amazonaws.com"
+        if [ $? != 0 ]; then
+          echo "success"
+        else
+          echo "fail"
       shell: bash
