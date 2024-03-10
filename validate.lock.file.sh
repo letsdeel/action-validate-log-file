@@ -14,4 +14,5 @@ else
   echo "wrong registries appear in package-lock.json file:"
   echo $FILES
   unset IFS
+  exit -1
 fi
