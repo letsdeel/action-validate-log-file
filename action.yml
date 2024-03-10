@@ -18,3 +18,4 @@ runs:
       shell: bash
     - run: |
         jq -r '.packages[] | select(.resolved != null) | .resolved' package-lock.json
+      shell: bash
