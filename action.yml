@@ -21,4 +21,5 @@ runs:
           echo "success"
         else
           echo "fail"
+        fi
       shell: bash
