@@ -1,0 +1,20 @@
+name: 'validate package-lock.json '
+description: 'this action will bump version of npm based library/package. it will work against the aws codeartifact registry and not against the package.json'
+inputs:
+  aws-role-arn:
+    description: 'AWS Role ARN'
+    required: true
+  codeartifact-auth-token:
+    description: 'CodeArtifact Authentication Token'
+    required: true
+outputs:
+  random-number:
+    description: "Random number"
+    value: ${{ steps.random-number-generator.outputs.random-number }}
+runs:
+  using: "composite"
+  steps:
+    - run: echo "${{ github.action_path }}" >> $GITHUB_PATH
+      shell: bash
+    - run: |
+        jq -r '.packages[] | select(.resolved != null) | .resolved' package-lock.json
