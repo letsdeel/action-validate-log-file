@@ -1,1 +1,1 @@
-# action-validate-log-file
+# action-validate-lock-file
